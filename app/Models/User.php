@@ -14,7 +14,7 @@ class User extends Model
         'email',
     ];
     use HasFactory;
-    public function address()
+    public function addresses()
     {
         return $this->hasMany(Address::class, 'user_id');
     }

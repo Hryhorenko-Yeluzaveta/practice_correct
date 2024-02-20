@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $user = User::factory()->create();
-        Address::factory()->create([
+        Address::factory(2)->create([
             'user_id' => $user->id
         ]);
     }

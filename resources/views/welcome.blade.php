@@ -16,7 +16,7 @@
 </style>
 <body>
 <h1>User Page</h1>
-    <form action="{{ route('update', ['id' => $users->id]) }}" method="post">
+<form action="{{ route('update', ['userId' => $users->id]) }}" method="post">
         @csrf
         <div class="row">
             <div class="col-3">
@@ -32,60 +32,62 @@
 
         <div class="row"><h4>Full Name</h4>
             <div class="col-3">
-                <input required type="text" value="{{$users->firstname}}" class="form-control"  id="firstname" name="firstname">
+                <input required type="text" value="{{$users->firstname}}" class="form-control" id="firstname"
+                       name="firstname">
                 <label for="firstname" class="form-label">First Name</label>
             </div>
             <div class="col-3">
-                <input required type="text" class="form-control" value="{{$users->lastname}}" id="lastname" name="lastname">
+                <input required type="text" class="form-control" value="{{$users->lastname}}" id="lastname"
+                       name="lastname">
                 <label for="lastname" class="form-label">Last Name</label>
             </div>
-                        <h4>Phone Number</h4>
-                        <div class="col-3">
-                            <input required type="text" class="form-control"  value="{{$users->phone}}" placeholder="(000) 000-0000" id="phone" name="phone">
-                        </div>
-                        <h4>E-mail</h4>
-                        <div class="col-3">
-                            <input required type="text" class="form-control" value="{{$users->email}}"  placeholder="ex: email@yahoo.com" id="email" name="email">
-                            <label for="email" class="form-label">example@example.com</label>
-                        </div>
-                    </div>
+            <h4>Phone Number</h4>
+            <div class="col-3">
+                <input required type="text" class="form-control" value="{{$users->phone}}" placeholder="(000) 000-0000"
+                       id="phone" name="phone">
+            </div>
+            <h4>E-mail</h4>
+            <div class="col-3">
+                <input required type="text" class="form-control" value="{{$users->email}}"
+                       placeholder="ex: email@yahoo.com" id="email" name="email">
+                <label for="email" class="form-label">example@example.com</label>
+            </div>
+        </div>
 
-
-                @foreach($users->address as $address)
-
-                <div class="cols-row"><h4>Address</h4>
-                    <div class="col-6">
-                        <input required type="text" class="form-control" value="{{$address->address1}}" id="address1" name="address1">
-                        <label for="address1" class="form-label">Street Address</label>
-                    </div>
-                    <div class="col-6">
-                        <input required type="text" class="form-control" id="address2" value="{{$address->address2}}" name="address2">
-                        <label for="address2" class="form-label">Street Address Line 2</label>
-                    </div>
+        @foreach($users->addresses as $address)
+            <div class="cols-row"><h4>Address</h4>
+                <div class="col-6">
+                    <input required type="text" class="form-control" value="{{$address->address1}}" id="address1"
+                           name="address1[]">
+                    <label for="address1" class="form-label">Street Address</label>
                 </div>
-                <div class="col-3">
-                    <input required type="text" class="form-control" id="city" value="{{$address->city}}" name="city">
-                    <label for="city" class="form-label">City</label>
+                <div class="col-6">
+                    <input required type="text" class="form-control" id="address2" value="{{$address->address2}}"
+                           name="address2[]">
+                    <label for="address2" class="form-label">Street Address Line 2</label>
                 </div>
+            </div>
+            <div class="col-3">
+                <input required type="text" class="form-control" id="city" value="{{$address->city}}" name="city[]">
+                <label for="city" class="form-label">City</label>
+            </div>
 
-                <div class="col-3">
-                    <input required type="text" id="state" name="state" value="{{$address->state}}" class="form-control" >
-                    <label for="state" class="form-label">State/Province</label>
+            <div class="col-3">
+                <input required type="text" id="state" name="state[]" value="{{$address->state}}" class="form-control">
+                <label for="state" class="form-label">State/Province</label>
+            </div>
+
+            <div class="row-cols">
+                <div class="col-6">
+                    <input required type="text" class="form-control" name="zip[]" value="{{$address->zip}}" id="zip">
+                    <label for="zip" class="form-label">Postal / Zip Code</label>
                 </div>
-
-                <div class="row-cols">
-                    <div class="col-6">
-                        <input required type="text" class="form-control"name="zip" value="{{$address->zip}}" id="zip">
-                        <label for="zip" class="form-label">Postal / Zip Code</label>
-                    </div>
-
-                    @endforeach
+            </div>
+                @endforeach
 
                     <div class="col-12">
                         <button type="submit" class="btn btn-success">Update</button>
                     </div>
-                </div>
-        </div>
     </form>
 </body>
 </html>
