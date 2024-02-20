@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Users extends Model
+class Address extends Model
 {
     protected $fillable = [
-        'firstname',
-        'lastname',
-        'phone',
-        'email',
+        'address1',
+        'address2',
+        'city',
+        'state',
+        'zip',
     ];
     use HasFactory;
-    public function address()
+    public function user()
     {
-        return $this->hasMany(Addresses::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }

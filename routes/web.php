@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UserController;
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-Route::get('/', [UsersController::class, 'showUSer'])->name('welcome');
-Route::post('/welcome/{id}', [UsersController::class, 'updateUser'])->name('update');
+Route::get('/', [UserController::class, 'showUSer'])->name('welcome');
+Route::post('/welcome/{id}', [UserController::class, 'updateUser'])->name('update');
